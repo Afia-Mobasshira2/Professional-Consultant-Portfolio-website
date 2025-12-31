@@ -52,23 +52,89 @@ nav ul li a:hover { color: #007bff; }
 .btn:hover { background: #0056b3; transform: translateY(-3px); }
 
 /* Contact Section */
-.contact { padding: 80px 10%; background: #fff; }
-.contact h2 { text-align: center; margin-bottom: 40px; }
-.contact-wrapper { display: flex; gap: 50px; }
-.contact-info { flex: 1; }
-.info-box { display: flex; align-items: center; margin-bottom: 20px; }
-.info-box i { font-size: 24px; color: #007bff; margin-right: 15px; }
-
-.contact-form { flex: 1; display: flex; flex-direction: column; }
-.contact-form input, .contact-form textarea {
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
+/* --- Responsive Contact Section --- */
+.contact { 
+    padding: 80px 10%; 
+    background: #f2f2f2; /* Matching your grey theme */
 }
-.contact-form input:focus { border-color: #007bff; box-shadow: 0 0 5px rgba(0,123,255,0.3); }
 
+/* --- Fix for the Contact Layout --- */
+.contact-wrapper { 
+    display: flex; 
+    justify-content: space-between; /* This pushes Info to left and Form to right */
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap; /* Allows stacking on mobile */
+    margin-top: 40px;
+}
+
+.contact-info { 
+    flex: 1; 
+    min-width: 300px; /* Prevents it from getting too thin */
+}
+
+.contact-form { 
+    flex: 1.5; /* Makes the form slightly wider than the info */
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fix for those tiny inputs in your screenshot */
+.contact-form input, 
+.contact-form textarea {
+    width: 100%; /* Ensures they fill the container */
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Make button look like the screenshot but better */
+.contact-form .btn {
+    width: fit-content;
+    padding: 15px 40px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Mobile Responsive Media Query */
+@media (max-width: 992px) {
+    .contact-wrapper {
+        flex-direction: column; /* Stacks Info on top of Form */
+    }
+    
+    .contact-info {
+        margin-bottom: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Icons sit side-by-side on tablets */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        padding: 60px 5%; /* Less padding on small phones */
+    }
+    
+    .contact-info {
+        display: block; /* Stack icons vertically on small phones */
+    }
+    
+    .info-box {
+        margin-bottom: 20px;
+    }
+}
 /* Footer */
 footer {
     background: #222;
